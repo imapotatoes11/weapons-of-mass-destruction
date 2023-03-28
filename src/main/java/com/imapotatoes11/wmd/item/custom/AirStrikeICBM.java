@@ -28,7 +28,7 @@ public class AirStrikeICBM extends Item {
                     hitResult.getPos().x,
                     hitResult.getPos().y+128,
                     hitResult.getPos().z,
-                    500.0f,
+                    100.0f,
                     user
             );
             arrow.setVelocity(0,-50,0);

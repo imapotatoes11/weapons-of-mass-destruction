@@ -11,14 +11,26 @@ import net.minecraft.world.World;
 public class EntityExplosiveArrow extends ArrowEntity {
     private float POWER;
     private Entity SOURCE;
+
+    private long ticks=0;
+
     public EntityExplosiveArrow(World world, double x, double y, double z, float power, Entity source){
         super(world, x, y, z);
         this.POWER=power;
         this.SOURCE=source;
     }
 
+    @Override
+    public void tick() {
+        ticks++;
+        if (ticks>50){
+            this.kill();
+        }
+        super.tick();
+    }
+
     private void doExplosion(Entity entity, World world, double x, double y, double z){
-        world.createExplosion(entity, x, y, z, this.POWER, World.ExplosionSourceType.TNT);
+        world.createExplosion(entity, x, y, z, this.POWER, World.ExplosionSourceType.BLOCK);
     }
 
     @Override
