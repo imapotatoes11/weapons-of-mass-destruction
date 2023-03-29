@@ -1,67 +1,130 @@
 package com.imapotatoes11.wmd.item.custom;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
-import net.minecraft.util.hit.HitResult;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class EntityExplosiveArrow extends ArrowEntity {
-    private float POWER;
-    private Entity SOURCE;
-
-    private long ticks=0;
-
-    public EntityExplosiveArrow(World world, double x, double y, double z, float power, Entity source){
-        super(world, x, y, z);
-        this.POWER=power;
-        this.SOURCE=source;
+    public boolean chaos=false;
+    public EntityExplosiveArrow(World world, double x, double y, double z){
+        super(world,x,y,z);
+    }
+    public EntityExplosiveArrow(EntityType entityType, World world, boolean chaos){super(entityType,world); this.chaos=chaos;}
+    public EntityExplosiveArrow(EntityType entityType, World world){
+        super(entityType,world);
     }
 
-    @Override
-    public void tick() {
-        ticks++;
-        if (ticks>50){
-            this.kill();
+    private static BlockPos[] randomPos(int amount, BlockPos bound1, BlockPos bound2){
+        BlockPos[] posList = new BlockPos[amount];
+        for (int i = 0; i < amount; i++) {
+            posList[i] = new BlockPos(
+                    (int) (Math.random() * (bound2.getX() - bound1.getX()) + bound1.getX()),
+                    (int) (Math.random() * (bound2.getY() - bound1.getY()) + bound1.getY()),
+                    (int) (Math.random() * (bound2.getZ() - bound1.getZ()) + bound1.getZ())
+            );
         }
-        super.tick();
-    }
-
-    private void doExplosion(Entity entity, World world, double x, double y, double z){
-        world.createExplosion(entity, x, y, z, this.POWER, World.ExplosionSourceType.BLOCK);
-    }
-
-    @Override
-    protected void onCollision(HitResult hitResult) {
-        super.onCollision(hitResult);
-        this.doExplosion(this.SOURCE, this.SOURCE.getEntityWorld(),
-                hitResult.getPos().x, hitResult.getPos().y, hitResult.getPos().z);
-    }
-
-    @Override
-    protected void onHit(LivingEntity target) {
-        super.onHit(target);
-        this.doExplosion(this.SOURCE, this.SOURCE.getEntityWorld(),
-                target.getX(), target.getY(), target.getZ());
-    }
-
-    @Override
-    protected void onBlockHit(BlockHitResult blockHitResult) {
-        super.onBlockHit(blockHitResult);
-        this.doExplosion(this.SOURCE, this.SOURCE.getEntityWorld(),
-                blockHitResult.getPos().x,
-                blockHitResult.getPos().y,
-                blockHitResult.getPos().z);
+        return posList;
     }
 
     @Override
     protected void onEntityHit(EntityHitResult entityHitResult) {
-        super.onEntityHit(entityHitResult);
-        this.doExplosion(this.SOURCE, this.SOURCE.getEntityWorld(),
-                entityHitResult.getPos().x,
-                entityHitResult.getPos().y,
-                entityHitResult.getPos().z);
+        if (!this.chaos) {
+            world.createExplosion(
+                    MinecraftClient.getInstance().player,
+                    entityHitResult.getPos().x,
+                    entityHitResult.getPos().y,
+                    entityHitResult.getPos().z,
+                    10.0F, // default 5.0F
+                    World.ExplosionSourceType.TNT
+            );
+            this.kill();
+            super.onEntityHit(entityHitResult);
+        }
+        else{
+//            world.createExplosion(
+//                    MinecraftClient.getInstance().player,
+//                    entityHitResult.getPos().x,
+//                    entityHitResult.getPos().y,
+//                    entityHitResult.getPos().z,
+//                    100.0F, // default 5.0F
+//                    Explosion.DestructionType.BREAK
+//            );
+
+            BlockPos[] positions = randomPos(
+                    50,
+                    new BlockPos(
+                            (int) (entityHitResult.getPos().x-25),
+                            (int) (entityHitResult.getPos().y-25),
+                            (int) (entityHitResult.getPos().z-25)),
+                    new BlockPos(
+                            (int) (entityHitResult.getPos().x+25),
+                            (int) (entityHitResult.getPos().y+25),
+                            (int) (entityHitResult.getPos().z+25)));
+            for (BlockPos pos : positions) {
+                world.createExplosion(
+                        MinecraftClient.getInstance().player,
+                        pos.getX(),
+                        pos.getY(),
+                        pos.getZ(),
+                        random.nextFloat()*50,
+                        World.ExplosionSourceType.TNT
+                );
+            }
+
+            this.kill();
+            super.onEntityHit(entityHitResult);
+        }
+    }
+
+    @Override
+    protected void onBlockHit(BlockHitResult blockHitResult) {
+        if (!this.chaos) {
+            world.createExplosion(
+                    MinecraftClient.getInstance().player,
+                    blockHitResult.getPos().x,
+                    blockHitResult.getPos().y,
+                    blockHitResult.getPos().z,
+                    5.0F,
+                    World.ExplosionSourceType.TNT
+            );
+            this.kill();
+            super.onBlockHit(blockHitResult);
+        }
+        else{
+//            world.createExplosion(
+//                    MinecraftClient.getInstance().player,
+//                    blockHitResult.getPos().x,
+//                    blockHitResult.getPos().y,
+//                    blockHitResult.getPos().z,
+//                    100.0F,
+//                    Explosion.DestructionType.BREAK
+//            );
+            BlockPos[] positions = randomPos(
+                    50,
+                    new BlockPos(
+                            (int) (blockHitResult.getPos().x-25),
+                            (int) (blockHitResult.getPos().y-25),
+                            (int) (blockHitResult.getPos().z-25)),
+                    new BlockPos(
+                            (int) (blockHitResult.getPos().x+25),
+                            (int) (blockHitResult.getPos().y+25),
+                            (int) (blockHitResult.getPos().z+25)));
+            for (BlockPos pos : positions) {
+                world.createExplosion(
+                        MinecraftClient.getInstance().player,
+                        pos.getX(),
+                        pos.getY(),
+                        pos.getZ(),
+                        random.nextFloat()*50,
+                        World.ExplosionSourceType.TNT
+                );
+            }
+            this.kill();
+            super.onBlockHit(blockHitResult);
+        }
     }
 }

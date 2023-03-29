@@ -1,6 +1,7 @@
 package com.imapotatoes11.wmd.item;
 
 import com.imapotatoes11.wmd.Wmd;
+import com.imapotatoes11.wmd.item.custom.AirStrike;
 import com.imapotatoes11.wmd.item.custom.AirStrikeICBM;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
@@ -16,6 +17,8 @@ public class ModItems {
 
     public static final Item AIR_STRIKE_ICBM = registerItem("air_strike_icbm",
             new AirStrikeICBM(new FabricItemSettings()));
+    public static final Item AIR_STRIKE = registerItem("air_strike",
+            new AirStrike(new FabricItemSettings()));
 
 
     public static final ItemGroup ITEM_GROUP = FabricItemGroup.builder(
@@ -25,7 +28,8 @@ public class ModItems {
             .icon(() -> new ItemStack(AIR_STRIKE_ICBM))
             .entries((enabledFeatures, entries) -> {
                 for (Item entry : new Item[] {
-                        AIR_STRIKE_ICBM
+                        AIR_STRIKE_ICBM,
+                        AIR_STRIKE
                 }) entries.add(new ItemStack(entry));
             })
             .build();
