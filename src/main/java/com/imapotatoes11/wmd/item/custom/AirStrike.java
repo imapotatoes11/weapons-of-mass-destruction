@@ -48,7 +48,7 @@ public class AirStrike extends Item {
     }
     @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        tooltip.add(Text.translatable("Completely annihilates the surface of a 50x50 area.").formatted(Formatting.DARK_PURPLE));
+        tooltip.add(Text.translatable("Total surface annihilation").formatted(Formatting.DARK_PURPLE));
         tooltip.add(Text.translatable("USE SPARINGLY").formatted(Formatting.DARK_PURPLE));
         super.appendTooltip(stack, world, tooltip, context);
     }
