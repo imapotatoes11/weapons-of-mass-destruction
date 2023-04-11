@@ -21,18 +21,18 @@ public class ModItems {
             new AirStrike(new FabricItemSettings()));
 
 
-    public static final ItemGroup ITEM_GROUP = FabricItemGroup.builder(
-            new Identifier("wmd","wmd_items")
-    )
-            .displayName(Text.literal("Weapons of Mass Destruction"))
-            .icon(() -> new ItemStack(AIR_STRIKE_ICBM))
-            .entries((enabledFeatures, entries) -> {
-                for (Item entry : new Item[] {
-                        AIR_STRIKE_ICBM,
-                        AIR_STRIKE
-                }) entries.add(new ItemStack(entry));
-            })
-            .build();
+//    public static final ItemGroup ITEM_GROUP = FabricItemGroup.builder(
+//            new Identifier("wmd","wmd_items")
+//    )
+//            .displayName(Text.literal("Weapons of Mass Destruction"))
+//            .icon(() -> new ItemStack(AIR_STRIKE_ICBM))
+//            .entries((enabledFeatures, entries) -> {
+//                for (Item entry : new Item[] {
+//                        AIR_STRIKE_ICBM,
+//                        AIR_STRIKE
+//                }) entries.add(new ItemStack(entry));
+//            })
+//            .build();
 
     private static Item registerItem(String name, Item item){
         return Registry.register(Registries.ITEM, new Identifier(Wmd.MOD_ID, name), item);

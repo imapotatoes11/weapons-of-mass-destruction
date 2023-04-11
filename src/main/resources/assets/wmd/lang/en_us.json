@@ -1,4 +1,6 @@
 {
   "item.wmd.air_strike_icbm": "ICBM",
-  "item.wmd.air_strike": "Air Strike"
+  "item.wmd.air_strike": "Air Strike",
+
+  "block.wmd.proximity_mine": "Proximity Mine"
 }

@@ -1,5 +1,6 @@
 package com.imapotatoes11.wmd;
 
+import com.imapotatoes11.wmd.block.ModBlocks;
 import com.imapotatoes11.wmd.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
@@ -21,5 +22,7 @@ public class Wmd implements ModInitializer {
 
 		LOGGER.info("Hello Fabric world!");
 		ModItems.registerModItems();
+		ModBlocks.registerModBlocks();
+		WmdItemGroup.buildItemGroup();
 	}
 }
