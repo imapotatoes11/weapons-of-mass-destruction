@@ -19,6 +19,7 @@ public class WmdItemGroup {
                 for (Item entry: new Item[]{
                         ModItems.AIR_STRIKE_ICBM,
                         ModItems.AIR_STRIKE,
+                        ModItems.ORBITAL_STRIKE,
                         Item.fromBlock(ModBlocks.NUCLEAR_WARHEAD),
                         Item.fromBlock(ModBlocks.PROXIMITY_MINE)
                 }) entries.add(new ItemStack(entry));

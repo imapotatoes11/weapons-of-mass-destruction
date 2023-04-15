@@ -1,6 +1,7 @@
 {
   "item.wmd.air_strike_icbm": "ICBM",
   "item.wmd.air_strike": "Air Strike",
+  "item.wmd.orbital_strike": "Orbital Cannon",
 
   "block.wmd.proximity_mine": "Proximity Mine",
   "block.wmd.nuclear_warhead": "Nuclear Warhead"

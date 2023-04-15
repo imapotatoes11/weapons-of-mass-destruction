@@ -1,0 +1,8 @@
+{
+  "orbital_strike": {
+    "subtitle": "subtitles.wmd.orbital_strike_sound",
+    "sounds": [
+      "wmd:orbital_strike"
+    ]
+  }
+}

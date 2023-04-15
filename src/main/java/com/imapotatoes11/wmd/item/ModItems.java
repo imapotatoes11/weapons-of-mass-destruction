@@ -3,6 +3,7 @@ package com.imapotatoes11.wmd.item;
 import com.imapotatoes11.wmd.Wmd;
 import com.imapotatoes11.wmd.item.custom.AirStrike;
 import com.imapotatoes11.wmd.item.custom.AirStrikeICBM;
+import com.imapotatoes11.wmd.item.custom.ItemOrbitalStrike;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.Item;
@@ -19,6 +20,9 @@ public class ModItems {
             new AirStrikeICBM(new FabricItemSettings()));
     public static final Item AIR_STRIKE = registerItem("air_strike",
             new AirStrike(new FabricItemSettings()));
+
+    public static final Item ORBITAL_STRIKE = registerItem("orbital_strike",
+            new ItemOrbitalStrike(new FabricItemSettings()));
 
 
 //    public static final ItemGroup ITEM_GROUP = FabricItemGroup.builder(
