@@ -60,20 +60,21 @@ public class ItemOrbitalStrike extends Item {
         if (!(this.hitResult ==null) && !world.isClient()) {
             if ((!this.hitStored) && this.remainingTicks != 0) this.remainingTicks = 0;
             if (this.remainingTicks <= 1) {
-//                for (int y = -60; y < 318; y+=10) {
-//                    if (this.hitResult!=null)
-////                        world.createExplosion(null, hitResult.getPos().x, y, hitResult.getPos().z, 10.0f, World.ExplosionSourceType.TNT);
+                for (int y = -60; y < 318; y+=15) {
+                    if (this.hitResult!=null)
+                        world.createExplosion(null, hitResult.getPos().x, 258-y, hitResult.getPos().z, 100.0f, World.ExplosionSourceType.TNT);
 //                        Util.voidSphere(world, random.nextInt(5,25), new BlockPos(
 //                                (int)this.hitResult.getPos().getX() + random.nextInt(-10, 10),
 //                                y,
 //                                (int)this.hitResult.getPos().getZ() + random.nextInt(-10, 10)
 //                        ));
-//                }
-                Util.voidSphere(world, 20, new BlockPos(
-                        (int)this.hitResult.getPos().getX(),
-                        (int)this.hitResult.getPos().getY(),
-                        (int)this.hitResult.getPos().getZ()
-                ));
+                }
+//                Util.voidSphere(world, 15, new BlockPos(
+//                        (int)this.hitResult.getPos().getX(),
+//                        (int)this.hitResult.getPos().getY(),
+//                        (int)this.hitResult.getPos().getZ()
+//                ));
+//                world.createExplosion(null, hitResult.getPos().x, hitResult.getPos().y, hitResult.getPos().z, 100.0f, World.ExplosionSourceType.TNT);
                 List<Entity> entities = world.getOtherEntities(entity, new Box(
                         this.hitResult.getPos().x-20,
                         this.hitResult.getPos().y-20,
