@@ -20,8 +20,9 @@ public class WmdItemGroup {
                         ModItems.AIR_STRIKE_ICBM,
                         ModItems.AIR_STRIKE,
                         ModItems.ORBITAL_STRIKE,
-                        Item.fromBlock(ModBlocks.NUCLEAR_WARHEAD),
-                        Item.fromBlock(ModBlocks.PROXIMITY_MINE)
+                        ModItems.DEMATERIALIZER,
+                        ModBlocks.NUCLEAR_WARHEAD.asItem(),
+                        ModBlocks.PROXIMITY_MINE.asItem()
                 }) entries.add(new ItemStack(entry));
             })
             .build();

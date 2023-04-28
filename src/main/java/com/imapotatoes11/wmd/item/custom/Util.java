@@ -4,6 +4,8 @@ import com.imapotatoes11.wmd.item.custom.lib.Sphere;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 
 import java.util.Random;
@@ -36,5 +38,11 @@ public class Util {
     }
     public static boolean randomChance(float percentChance) {
         return Math.random() < percentChance;
+    }
+    public static Vec3d floorVec3d(Vec3d vec){
+        return new Vec3d(Math.floor(vec.getX()), Math.floor(vec.getY()), Math.floor(vec.getZ()));
+    }
+    public static Vec3i toVec3i(Vec3d vec){
+        return new Vec3i((int) vec.getX(), (int) vec.getY(), (int) vec.getZ());
     }
 }
