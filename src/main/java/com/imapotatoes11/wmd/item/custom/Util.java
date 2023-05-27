@@ -45,4 +45,13 @@ public class Util {
     public static Vec3i toVec3i(Vec3d vec){
         return new Vec3i((int) vec.getX(), (int) vec.getY(), (int) vec.getZ());
     }
+
+    public static Vec3d randomVec(double lBound, double hBound){
+        Random random=new Random();
+        return new Vec3d(
+                random.nextDouble(lBound, hBound),
+                random.nextDouble(lBound, hBound),
+                random.nextDouble(lBound, hBound)
+        );
+    }
 }

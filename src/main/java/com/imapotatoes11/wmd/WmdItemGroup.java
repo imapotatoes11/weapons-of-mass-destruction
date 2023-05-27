@@ -21,6 +21,7 @@ public class WmdItemGroup {
                         ModItems.AIR_STRIKE,
                         ModItems.ORBITAL_STRIKE,
                         ModItems.DEMATERIALIZER,
+                        ModItems.UNBLOCKINATOR,
                         ModBlocks.NUCLEAR_WARHEAD.asItem(),
                         ModBlocks.PROXIMITY_MINE.asItem()
                 }) entries.add(new ItemStack(entry));
