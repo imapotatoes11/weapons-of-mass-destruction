@@ -44,11 +44,11 @@ public class ItemUnBlockInator extends Item {
                                 random.nextDouble(-1, 1.5),
                                 random.nextDouble(0.5, 1.5),
                                 random.nextDouble(-1, 1.5)));
-//                        fallingBlock.addVelocity(
-//                                -(pos.getX()-hitResult.getPos().getX()),
-//                                -(pos.getY()-hitResult.getPos().getY()),
-//                                -(pos.getZ()-hitResult.getPos().getZ())
-//                        ); // this one makes too perfect results
+                        fallingBlock.addVelocity(
+                                -(pos.getX()-hitResult.getPos().getX())/5,
+                                -(pos.getY()-hitResult.getPos().getY())/5,
+                                -(pos.getZ()-hitResult.getPos().getZ())/5
+                        ); // this one makes too perfect results
                         fallingBlock.setNoGravity(false);
                     }
                 }
