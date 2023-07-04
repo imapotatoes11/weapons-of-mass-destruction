@@ -3,16 +3,17 @@ package com.imapotatoes11.wmd.item.custom;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.projectile.ArrowEntity;
+import net.minecraft.entity.projectile.TridentEntity;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.EntityHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class EntityExplosiveArrow extends ArrowEntity {
+public class EntityExplosiveArrow extends TridentEntity {
     public boolean chaos=false;
-    public EntityExplosiveArrow(World world, double x, double y, double z){
-        super(world,x,y,z);
-    }
+//    public EntityExplosiveArrow(World world, double x, double y, double z){
+//        super(world,x,y,z);
+//    }
     public EntityExplosiveArrow(EntityType entityType, World world, boolean chaos){super(entityType,world); this.chaos=chaos;}
     public EntityExplosiveArrow(EntityType entityType, World world){
         super(entityType,world);

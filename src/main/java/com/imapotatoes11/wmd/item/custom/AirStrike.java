@@ -18,9 +18,21 @@ import java.util.Random;
 
 public class AirStrike extends Item {
     public int bound = 5;
+    public int precision = 25;
 
     public AirStrike(Settings settings){
         super(settings);
+    }
+
+    public AirStrike(Settings settings, int precision) {
+        super(settings);
+        this.precision = precision;
+    }
+
+    public AirStrike(Settings settings, int precision, int bound) {
+        super(settings);
+        this.precision = precision;
+        this.bound = bound;
     }
 
     @Override
@@ -32,14 +44,14 @@ public class AirStrike extends Item {
         int randX, randY, randZ;
         double velX = 0; double velZ = 0;
         for (int i = 0; i < 500; i++){
-            randX = random.nextInt(-bound, bound);
-            randY = random.nextInt(-25, 25);
-            randZ = random.nextInt(-bound, bound);
+            randX = (precision != 0) ? random.nextInt(-precision, precision) : 0;
+            randY = random.nextInt(-bound, bound);
+            randZ = (precision != 0) ? random.nextInt(-precision, precision) : 0;
 
-            velX = random.nextDouble(-0.25, 0.25);
-            velZ = random.nextDouble(-0.25, 0.25);
+//            velX = random.nextDouble(-0.25, 0.25);
+//            velZ = random.nextDouble(-0.25, 0.25);
 
-            EntityExplosiveArrow explosiveArrow = new EntityExplosiveArrow(EntityType.ARROW, world);
+            EntityExplosiveArrow explosiveArrow = new EntityExplosiveArrow(EntityType.TRIDENT, world);
             explosiveArrow.teleport(user.getX() + randX, 256 + randY, user.getZ() + randZ);
             explosiveArrow.setVelocity(velX, 0, velZ);
             world.spawnEntity(explosiveArrow);

@@ -19,6 +19,7 @@ public class WmdItemGroup {
                 for (Item entry: new Item[]{
                         ModItems.AIR_STRIKE_ICBM,
                         ModItems.AIR_STRIKE,
+                        ModItems.AIR_STRIKE_PRECISION,
                         ModItems.ORBITAL_STRIKE,
                         ModItems.DEMATERIALIZER,
                         ModItems.UNBLOCKINATOR,

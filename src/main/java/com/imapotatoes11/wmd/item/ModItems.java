@@ -14,6 +14,8 @@ public class ModItems {
             new AirStrikeICBM(new FabricItemSettings()));
     public static final Item AIR_STRIKE = registerItem("air_strike",
             new AirStrike(new FabricItemSettings()));
+    public static final Item AIR_STRIKE_PRECISION = registerItem("air_strike_precision",
+            new AirStrike(new FabricItemSettings(), 0));
 
     public static final Item ORBITAL_STRIKE = registerItem("orbital_strike",
             new ItemOrbitalStrike(new FabricItemSettings()));
